@@ -1,20 +1,42 @@
-import React from "react";
+import React from 'react';
 
-const WeatherForm = props => (
-    <div className="card card-body">
-        <form onSubmit={props.getWather}>
-            <div className="form-group">
-                <input type="text" name="city" placeholder="Your City Name"
-                className="form-control" autoFocus/>
-            </div>
-            <div className="form-group">
-                <input type="text" name="country" placeholder="Your Country Name" className="form-control"/>
-            </div>
-            <button className="btn btn-success btn-block">
-                Get Weather
-            </button>
-        </form>
-    </div>
-);
+const WeatherInfo = props => {
+    console.log(props)
+    return (
+        <div>
+            {
+                props.error &&
+                <div className="alert alert-danger">
+                    <p>{props.error}</p>
+                </div>
+            }
+            {props.temperature ?
+                <div className="card card-body mt-2 animated fadeInUp" >
+                    {
+                        props.city && props.country &&
+                        <p><i className="fas fa-location-arrow"></i> Location: {props.city}, {props.country}</p>
+                    }
+                    {
+                        props.temperature &&
+                        <p><i className="fas fa-temperature-low"></i> Temperature: {props.temperature} ℃, {props.description}</p>
+                    }
+                    {
+                        props.humidity &&
+                        <p><i className="fas fa-water"></i> Humidity: {props.humidity}</p>
+                    }
+                    {
+                        props.wind_speed &&
+                        <p><i className="fas fa-wind"></i> Wind Speed: {props.wind_speed}</p>
+                    }
+                </div>
+                :
+                <div className="card card-body mt-2 text-center">
+                    <i className="fas fa-sun fa-10x"></i>
+                </div>
+            }
+        </div>
 
-export default WeatherForm; 
+    )
+}
+
+export default WeatherInfo;
