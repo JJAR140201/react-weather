@@ -2,7 +2,7 @@ import React from "react";
 
 const WeatherForm = props => (
     <div className="card card-body">
-        <form action="">
+        <form onSubmit={props.getWather}>
             <div className="form-group">
                 <input type="text" name="city" placeholder="Your City Name"
                 className="form-control" autoFocus/>
@@ -17,4 +17,4 @@ const WeatherForm = props => (
     </div>
 );
 
-export default WeatherForm;
+export default WeatherForm; 
